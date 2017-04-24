@@ -26,3 +26,24 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## NOTES
+
+Run this in the project directory when "ng serve" does not work
+$ npm install -g @angular/cli@latest
+
+
+Issue:
+On Chrome
+Uncaught TypeError: Cannot read property 'apply' of undefined
+at XMLHttpRequest.desc.get [as ontimeout] (zone.js:1265)
+at XHRLocalObject.AbstractXHRObject._cleanup (abstract-xhr.js:149)
+at XMLHttpRequest.xhr.onreadystatechange (abstract-xhr.js:125)
+at XMLHttpRequest.wrapFn (zone.js:1230)
+at ZoneDelegate.invokeTask (zone.js:398)
+at Zone.runTask (zone.js:165)
+at XMLHttpRequest.ZoneTask.invoke (zone.js:460)
+
+Fix:
+npm install zone.js@0.8.5 --save
