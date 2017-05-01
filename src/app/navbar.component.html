@@ -1,4 +1,6 @@
-<ul class="nav navbar-nav">
-    <li role="presentation"><a [routerLink]="['']">Home</a></li>
-    <li role="presentation" *ngIf="!currentUser"><a [routerLink]="['login']">Sign in</a></li>
-</ul>
+<div class="collapse navbar-collapse" id="navbar-collapsible">
+    <ul class="nav navbar-nav">
+        <li role="presentation"><a [routerLink]="['']">Home</a></li>
+        <li role="presentation"><a [routerLink]="['login']">{{ !currentUser ? 'Sign in' : 'Logout' }}</a></li>
+    </ul>
+</div>

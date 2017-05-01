@@ -1,8 +1,12 @@
 export class User {
     id: number;
-    username: string;
+    email: string;
     password: string;
     firstName: string;
     lastName: string;
-    birthDate: string;
+    birthDate: {};
+    contactNumber: {};
+    address: {};
+    gender: string;
+    captcha: string;
 }

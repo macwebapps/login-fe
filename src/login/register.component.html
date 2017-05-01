@@ -1,41 +1,141 @@
 <div class="container">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-10 col-md-offset-1">
 
-        <div class="panel panel-default">
+        <div class="panel">
             <div class="panel-heading">
-                <img class="img-responsive center-block" alt="company-logo-banner" src="../assets/images/company-logo-banner.png">
+                <img class="company-logo-banner center-block" src="../assets/images/company-logo-banner.png" alt="company-logo-banner">
             </div>
 
             <!-- Panel Body -->
             <alert></alert>
             <div class="panel-body">
-                <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
-                        <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+                <form name="form" class="form-horizontal" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+                    
+                    <!-- Full Name -->
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                        <label for="firstName" class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12">Full Name</label>
+                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required placeholder="First Name" />
+                            <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required placeholder="Last Name" />
+                            <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
+                        </div>
                     </div>
-                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
-                        <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
+
+                    <!-- Email -->
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                        <label for="email" class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12">Email</label>
+                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control col-lg-5 col-md-6 col-sm-6 col-xs-6" name="email" [(ngModel)]="model.email" #email="ngModel" required  placeholder="you@domain.com" />
+                            <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+                        </div>
                     </div>
-                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-                        <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+
+                    <!-- Contact Number -->
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !contactNumber.valid }">
+                        <label for="contactNumber" class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12">Contact Number</label>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            <input type="text" class="form-control" name="areaCode" [(ngModel)]="model.areaCode" #areaCode="ngModel" required />
+                            <div *ngIf="f.submitted && !areaCode.valid" class="help-block">Area code is required</div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8">
+                            <input type="text" class="form-control" name="contactNumber" [(ngModel)]="model.contactNumber" #contactNumber="ngModel" required />
+                            <div *ngIf="f.submitted && !contactNumber.valid" class="help-block">Contact number is required</div>
+                        </div>
                     </div>
+
+                    <!-- Address -->
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                        <label for="address" class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12">Address</label>
+                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" name="street1" [(ngModel)]="model.street1" #street1="ngModel" required placeholder="Street Address" />
+                            <div *ngIf="f.submitted && !street1.valid" class="help-block">Street address is required</div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" name="street2" [(ngModel)]="model.street2" #street2="ngModel" placeholder="Street Address Line 2" />
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                        <label class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12"></label>
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-8">
+                            <input type="text" class="form-control" name="city" [(ngModel)]="model.city" #city="ngModel" required placeholder="City" />
+                            <div *ngIf="f.submitted && !city.valid" class="help-block">City is required</div>
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-8">
+                            <input type="text" class="form-control" name="stateProvince" [(ngModel)]="model.stateProvince" #stateProvince="ngModel" required placeholder="State / Province" />
+                            <div *ngIf="f.submitted && !stateProvince.valid" class="help-block">State / Province is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+                        <label class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12"></label>
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                            <input type="text" class="form-control" name="postalZipCode" [(ngModel)]="model.postalZipCode" #postalZipCode="ngModel" required placeholder="Postal / Zip Code" />
+                            <div *ngIf="f.submitted && !postalZipCode.valid" class="help-block">Postal / Zip Code is required</div>
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-8">
+                            <select class="form-control" name="country" #country="ngModel" [(ngModel)]="model.country" required>
+                                <option>Country</option>
+                                <option *ngFor="let country of countryList" [value]="country.code">{{country.name}}</option>
+                            </select>
+                            <div *ngIf="f.submitted && !country.valid" class="help-block">Country is required</div>
+                        </div>
+                    </div>
+
+                    <!-- Birthdate -->
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !birthDate.valid }">
+                        <label for="birthDate" class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12">Birth Date</label>
+                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-8">
+                            <my-date-picker name="birthDate" [options]="myDatePickerOptions" [(ngModel)]="model.birthDate" #birthDate="ngModel" required></my-date-picker>
+                            <div *ngIf="f.submitted && !birthDate.valid" class="help-block">Birth date is required</div>
+                        </div>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !gender.untouched }">
+                        <label for="gender" class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12">Gender</label>
+                        <label class="radio-inline col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                            <input type="radio" name="gender" id="genderMale" value="male" [(ngModel)]="model.gender" #gender="ngModel" required> Male
+                        </label>
+                        <label class="radio-inline col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                            <input type="radio" name="gender" id="genderFemale" value="female" [(ngModel)]="model.gender" #gender="ngModel" required> Female
+                        </label>
+                        <div *ngIf="f.submitted && !gender.valid" class="help-block">Choose a gender</div>
+                    </div>
+
+                    <!-- Passwords -->
                     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-                        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                        <label for="password" class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12">Password</label>
+                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+                            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                        </div>
                     </div>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password2.valid }">
+                        <label for="password2" class="control-label col-lg-2 col-md-12 col-sm-12 col-xs-12">Confirm Password</label>
+                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                            <input type="password" class="form-control" name="password2" [(ngModel)]="model.password2" #password2="ngModel" required />
+                            <div *ngIf="f.submitted && !password2.valid && password1!=password2" class="help-block">Password doesn't match</div>
+                        </div>
+                    </div>
+
+                    <re-captcha [(ngModel)]="model.captcha" name="captcha" required siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" #captchaControl="ngModel"
+                    ></re-captcha>
+                    <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error">Captcha must be solved</div>
+                    <div [hidden]="!captchaControl.valid" class="success">Captcha is valid</div>
+                    <div [hidden]="!f.form.pristin && !f.form.valid" class="error">The form must be filled out</div>
+                    <div [hidden]="!f.form.valid" class="success">The form is valid</div>
+                    <!-- <button (click)="model.captcha = ''">Reset Captcha</button> -->
+
+                    <!-- Register -->
                     <div class="form-group">
                         <button [disabled]="loading" class="btn btn-primary">Register</button>
                         <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                         <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
                     </div>
                 </form>
+                {{model|json}}
             </div>
         </div>
 
